@@ -17,32 +17,97 @@ have caught it, the architectural decision that created the exposure.
 
 ## Finding Index
 
-| ID | Title | OWASP Category | Severity | Date |
+| ID | Title | OWASP Category | Severity | Status |
 |---|---|---|---|---|
-| FINDING-001 | *(Week 3 — coming)* | LLM01 | High | — |
-| FINDING-002 | *(Week 4 — coming)* | LLM06 | High | — |
-| FINDING-003 | *(Week 5 — coming)* | LLM08 | High | — |
-| FINDING-004 | *(Week 9 — coming)* | Guardrail Eval | High | — |
+| FINDING-001 | Direct Prompt Injection | LLM01 | Low | Completed |
+| FINDING-002 | RAG Document Poisoning | LLM06 | — | In Progress |
+| FINDING-003 | Agent Tool Abuse | LLM08 | — | Planned |
+| FINDING-004 | Guardrail Bypass (Healthcare) | Guardrail Eval | — | Planned |
 
 ---
 
-## Framework Alignment
+## 🧭 How to Read a Finding
 
-**OWASP LLM Top 10 · MITRE ATLAS · NIST AI RMF · ISO/IEC 42001**
+Each finding is structured as:
+
+1. **scenario.md**  
+   Defines the system, architecture, and trust boundaries  
+
+2. **evidence-log.md**  
+   Contains real execution transcripts with SHA-256 integrity verification  
+
+3. **owasp-mapping.md**  
+   Classifies the finding (severity, exploitability, framework mapping)  
+
+4. **governance-bridge.md**  
+   Connects the finding to missing or incomplete risk register entries  
+
+5. **mitigation.md**  
+   Provides concrete, implementation-level remediation steps  
 
 ---
 
-## Folder Structure
+## 🔁 Cross-Repository Connection
+
+This repository represents the **technical validation layer**.
+
+Findings are mapped into governance artifacts in:
+
+👉 ai-governance-risk-assessments
+
+Flow:
+
+```
+Adversarial Testing → Evidence → OWASP Classification → Governance Gap → Remediation
+```
+
+---
+
+## 🧩 Framework Alignment
+
+- **OWASP LLM Top 10** — Vulnerability classification  
+- **MITRE ATLAS** — Adversarial techniques and tactics  
+- **NIST AI RMF** — Risk management and governance mapping  
+- **ISO/IEC 42001** — AI management system controls  
+
+---
+
+## 📂 Folder Structure
 
 ```bash
 findings/
 ├── 001-direct-prompt-injection/
+│   ├── transcripts/
+│   │   ├── 001-variant-a.txt
+│   │   ├── 001-variant-b.txt
+│   │   └── 001-variant-c.txt
+│   ├── scenario.md
+│   ├── evidence-log.md
+│   ├── owasp-mapping.md
+│   ├── governance-bridge.md
+│   └── mitigation.md
+│
 ├── 002-rag-document-poisoning/
+│   ├── scenario.md
+│   ├── evidence-log.md
+│   ├── impact-analysis.md
+│   ├── owasp-mapping.md
+│   └── mitigation.md
+│
 ├── 003-agent-tool-abuse/
 └── 004-guardrail-bypass/
 ```
 
 ---
 
-*Each finding folder contains: scenario.md · evidence-log.md · 
-owasp-mapping.md · mitigation.md*
+## 📌 Key Principle
+
+AI systems do not fail only at the model level.
+
+They fail at:
+- trust boundaries  
+- data flows  
+- system architecture  
+- missing governance controls  
+
+This repository focuses on identifying **where systems actually break** — and translating that into decisions organizations can act on.
